@@ -184,14 +184,14 @@ def receive_data():
         email = request.form['email']
         phone = request.form['phone']
         message = request.form['message']
-        with smtplib.SMTP("smtp.gmail.com", 587) as connection:
+        with smtplib.SMTP("smtp.gmail.com") as connection:
             connection.starttls()
             connection.login(user=MY_EMAIL, password=MY_PASSWORD)
             connection.sendmail(
                 from_addr=MY_EMAIL,
                 to_addrs="agrawalanant2021@gmail.com",
                 msg=f"Subject:Details Received\n\nName: {name}\nEmail: {email}\nPhone: {phone}\nMessage: {message}")
-        return render_template("contact.html", num=1)
+        return render_template("contact.html", num=1, datetime=datetime)
 
 
 @app.route("/new-post", methods=['GET', 'POST'])
