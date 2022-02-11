@@ -184,7 +184,7 @@ def receive_data():
         email = request.form['email']
         phone = request.form['phone']
         message = request.form['message']
-        with smtplib.SMTP("smtp.gmail.com") as connection:
+        with smtplib.SMTP("smtp.gmail.com", 587) as connection:
             connection.starttls()
             connection.login(user=MY_EMAIL, password=MY_PASSWORD)
             connection.sendmail(
